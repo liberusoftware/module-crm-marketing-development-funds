@@ -4,17 +4,13 @@ declare(strict_types=1);
 
 namespace Liberu\CRM\MarketingDevelopmentFunds\Models;
 
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use Liberu\Foundation\Organizations\Models\Team;
+use App\Traits\IsTenantModel;
 use Illuminate\Database\Eloquent\Model;
 
 /** @property int $team_id @property string $status @property float $amount @property float $reimbursed @property float $attributed_revenue */
 final class MdfRequest extends Model
 {
-    public function team(): BelongsTo
-    {
-        return $this->belongsTo(Team::class);
-    }
+    use IsTenantModel;
 
     protected $table = 'crm_mdf_requests';
 
